@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.footer {
+  @include flex-center;
+
+  max-height: 70px;
+  background-color: rgb(62, 62, 62);
+
+  h2 {
+    font-size: 32px;
+    color: var(--white);
+  }
+}

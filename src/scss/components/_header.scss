@@ -1,4 +1,6 @@
-.footer {
+@use '../abstracts' as *;
+
+.header {
   @include flex-center;
 
   max-height: 70px;
@@ -6,6 +8,6 @@
 
   h2 {
     font-size: 32px;
-		color: var(--white);
+    color: var(--white);
   }
 }

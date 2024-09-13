@@ -5,8 +5,9 @@ const include = require('gulp-file-include');
 const rigger = require('gulp-rigger');
 const htmlmin = require('gulp-htmlmin');
 // SASS
-const autoprefixer = require('gulp-autoprefixer');
 const sass = require('gulp-sass')(require('sass'));
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
 // JavaScript
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
@@ -20,41 +21,53 @@ const newer = require('gulp-newer');
 const browserSync = require('browser-sync').create();
 // Utility
 const changed = require('gulp-changed');
-const { compile } = require('sass');
+const clean = require('gulp-clean')
+const fs = require('fs')
 
+
+// Deleting dist folder 
+function cleanDist(done) {
+    // check if the folder exists
+    if (fs.existsSync('./dist')) {
+        return src('./dist', { read: false })
+        .pipe(clean({ force: true }))
+    }
+    // if doesn't use callback
+    done();
+}
 
 // Taks for fonts
 function fonts() {
-    return src('src/fonts/accomodate/**/*.*')
-        .pipe(changed('src/fonts', { extension: '.woff2' }))
+    return src('./src/fonts/accomodate/**/*.*')
+        .pipe(changed('./src/fonts', { extension: '.woff2' }))
         .pipe(ttf2woff2())
-        .pipe(dest('src/fonts'))
+        .pipe(dest('./src/fonts'))
 }
 
 // Task for images
 function images() {
-    return src('src/img/accomodate/**/*.*')
-        .pipe(newer('src/img'))
+    return src('./src/img/accomodate/**/*.*')
+        .pipe(newer('./src/img'))
         .pipe(webp())
-        .pipe(dest('src/img'))
+        .pipe(dest('./src/img'))
 }
 
 // Task for JS files
 function scripts() {
-    return src('src/js/accomodate/**/*.js')
+    return src('./src/js/accomodate/**/*.js')
         .pipe(rigger())
         .pipe(uglify())
         .pipe(rename({
             suffix: ".min",
             extname: ".js"
         }))
-        .pipe(dest('src/js'))
+        .pipe(dest('./src/js'))
         .pipe(browserSync.stream());
 }
 
 // Task for HTML files
 function pages() {
-    return src('src/**/*.dev.html', {base: 'src/pages'})
+    return src('./src/**/*.dev.html', {base: './src/pages'})
         .pipe(include({
             prefix: '@@',
             basepath: '@file'
@@ -70,13 +83,15 @@ function pages() {
 
 // Task for SASS
 function styles() {
-    return src('src/scss/**/*.scss')
-        .pipe(sass({ outputStyle: 'compressed' }))
+    return src('./src/scss/**/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(autoprefixer())
         .pipe(rename({
-            suffix: '.min',
-            extname: '.css'
+            suffix: '.min'
         }))
-        .pipe(dest("src/css"))
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest("./src/css"))
         .pipe(browserSync.stream())
 }
 
@@ -84,31 +99,31 @@ function styles() {
 function watching() {
     browserSync.init({
         server: {
-            baseDir: "src/"
+            baseDir: "./src/"
         }
     });
-    watch(['src/fonts/accomodate/**/*.*'], fonts)
-    watch(['src/img/accomodate/**/*.*'], images)
-    watch(['src/partials/**/*.html', 'src/**/*.dev.html'], pages)
-    watch(['src/scss/**/*.scss'], styles)
-    watch(['src/js/accomodate/**/*.js', 'src/js/components/**/*.js'], scripts)
+    watch(['./src/fonts/accomodate/**/*.*'], fonts)
+    watch(['./src/img/accomodate/**/*.*'], images)
+    watch(['./src/partials/**/*.html', './src/**/*.dev.html'], pages)
+    watch(['./src/scss/**/*.scss'], styles)
+    watch(['./src/js/accomodate/**/*.js', './src/js/components/**/*.js'], scripts)
         .on('change', browserSync.reload)
 }
 
 // Build project
 function building() {
     return src([
-        'src/img/**/*.*',
-        '!src/img/accomodate/**/*.*',
-        'src/fonts/**/*.*',
-        '!src/fonts/accomodate/**/*.*',
-        'src/*.html',
-        '!src/pages/*.dev.html',
-        '!src/pages/**/*.*',
-        'src/css/*.css',
-        'src/js/**/*.min.js',
-    ], {base : 'src'})
-        .pipe(dest('dist'))
+        './src/img/**/*.*',
+        '!./src/img/accomodate/**/*.*',
+        './src/fonts/**/*.*',
+        '!./src/fonts/accomodate/**/*.*',
+        './src/*.html',
+        '!./src/pages/*.dev.html',
+        '!./src/pages/**/*.*',
+        './src/css/*.css',
+        './src/js/**/*.min.js',
+    ], {base : './src'})
+        .pipe(dest('./dist'))
 }
 
 exports.fonts = fonts;
@@ -118,6 +133,7 @@ exports.pages = pages;
 exports.styles = styles;
 exports.building = building;
 exports.watching = watching;
+exports.cleanDist = cleanDist;
 
-exports.build = series(fonts, images, scripts, pages, styles, building);
+exports.build = series(cleanDist, fonts, images, scripts, pages, styles, building);
 exports.default = parallel(fonts, images, scripts, pages, styles, watching);

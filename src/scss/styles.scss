@@ -1,9 +1,4 @@
-@import
-"general",
-"mixins",
-"variables";
-
-@import 
-"blocks/header",
-"blocks/section",
-"blocks/footer";
+@use 'base';
+@use 'components';
+@use 'layouts';
+@use 'utilities';

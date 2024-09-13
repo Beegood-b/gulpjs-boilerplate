@@ -1,14 +1,15 @@
+@use '../abstracts' as *;
+
 .section {
   @include flex-center;
 
   min-height: 100%;
   background-color: powderblue;
 
-
   &__inner {
     padding-inline: 50px;
   }
-  
+
   &__title {
     @include flex-center;
     margin-bottom: 50px;
