@@ -4,10 +4,10 @@
   @include flex-center;
 
   max-height: 70px;
-  background-color: rgb(62, 62, 62);
+  background-color: var(--clr-secondary-500);
 
   h2 {
     font-size: 32px;
-    color: var(--white);
+    color: var(--clr-accent-400);
   }
 }

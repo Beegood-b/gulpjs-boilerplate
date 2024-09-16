@@ -4,7 +4,7 @@
   @include flex-center;
 
   min-height: 100%;
-  background-color: powderblue;
+  background-color: var(--clr-primary-200);
 
   &__inner {
     padding-inline: 50px;
@@ -13,6 +13,10 @@
   &__title {
     @include flex-center;
     margin-bottom: 50px;
+
+    h1 {
+      color: var(--clr-secondary-500);
+    }
   }
 
   &__description {
@@ -20,6 +24,7 @@
       font-size: 20px;
       text-align: center;
       padding: 20px;
+      color: var(--clr-primary-500);
     }
   }
 }

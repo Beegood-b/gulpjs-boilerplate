@@ -1,13 +1,13 @@
-@use '../abstracts' as *;
+@use '../abstracts/' as *;
 
 .header {
   @include flex-center;
 
   max-height: 70px;
-  background-color: rgb(62, 62, 62);
+  background-color: var(--clr-accent-400);
 
   h2 {
     font-size: 32px;
-    color: var(--white);
+    color: var(--clr-primary-100);
   }
 }
