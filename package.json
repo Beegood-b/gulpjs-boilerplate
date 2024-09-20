@@ -14,6 +14,7 @@
   },
   "eslintIgnore": [
     "src/js/main.min.js",
+    "src/js/libs/*.js",
     "dist"
   ],
   "lint-staged": {
