@@ -3,30 +3,30 @@
 @use '../abstracts' as *;
 
 .section {
-	@include flex-center;
+  @include flex-center;
 
-	min-height: calc(100vh - 140px);
-	background-color: var(--clr-primary-200);
+  min-height: calc(100vh - 140px);
+  background-color: var(--clr-primary-200);
 
-	&__inner {
-		padding-inline: 50px;
-	}
+  &__inner {
+    padding-inline: 50px;
+  }
 
-	&__title {
-		@include flex-center;
-		margin-bottom: 50px;
+  &__title {
+    @include flex-center;
+    margin-bottom: 50px;
 
-		h1 {
-			color: var(--clr-secondary-500);
-		}
-	}
+    h1 {
+      color: var(--clr-secondary-500);
+    }
+  }
 
-	&__description {
-		p {
-			font-size: 20px;
-			text-align: center;
-			padding: 20px;
-			color: var(--clr-primary-500);
-		}
-	}
+  &__description {
+    p {
+      font-size: 20px;
+      text-align: center;
+      padding: 20px;
+      color: var(--clr-primary-500);
+    }
+  }
 }

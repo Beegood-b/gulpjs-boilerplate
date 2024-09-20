@@ -5,28 +5,28 @@
 @use 'type' as t;
 
 @mixin rootOutput() {
-	// Loop through the map of colors palette
-	@each $color, $shades in c.$colors {
-		@each $shade, $value in $shades {
-			--clr-#{$color}-#{$shade}: #{$value};
-		}
-	}
+  // Loop through the map of colors palette
+  @each $color, $shades in c.$colors {
+    @each $shade, $value in $shades {
+      --clr-#{$color}-#{$shade}: #{$value};
+    }
+  }
 
-	// Loop through the type scale map
-	@each $screen-size, $font-sizes in t.$type-scale {
-		// For the small screen size, apply font sizes directly without a media query
-		@if $screen-size == small {
-			@each $size, $value in $font-sizes {
-				--fs-#{$size}: #{$value};
-			}
+  // Loop through the type scale map
+  @each $screen-size, $font-sizes in t.$type-scale {
+    // For the small screen size, apply font sizes directly without a media query
+    @if $screen-size == small {
+      @each $size, $value in $font-sizes {
+        --fs-#{$size}: #{$value};
+      }
 
-			// For all other screen sizes, apply font sizes within a media query
-		} @else {
-			@include b.mq(xl) {
-				@each $size, $value in $font-sizes {
-					--fs-#{$size}: #{$value};
-				}
-			}
-		}
-	}
+      // For all other screen sizes, apply font sizes within a media query
+    } @else {
+      @include b.mq(xl) {
+        @each $size, $value in $font-sizes {
+          --fs-#{$size}: #{$value};
+        }
+      }
+    }
+  }
 }

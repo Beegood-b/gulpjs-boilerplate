@@ -3,13 +3,13 @@
 @use '../abstracts' as *;
 
 .footer {
-	@include flex-center;
+  @include flex-center;
 
-	max-height: 70px;
-	background-color: var(--clr-secondary-500);
+  max-height: 70px;
+  background-color: var(--clr-secondary-500);
 
-	h2 {
-		font-size: 32px;
-		color: var(--clr-accent-400);
-	}
+  h2 {
+    font-size: 32px;
+    color: var(--clr-accent-400);
+  }
 }
