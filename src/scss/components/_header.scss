@@ -1,13 +1,15 @@
+/* HEADER */
+
 @use '../abstracts/' as *;
 
 .header {
-  @include flex-center;
+	@include flex-center;
 
-  max-height: 70px;
-  background-color: var(--clr-accent-400);
+	max-height: 70px;
+	background-color: var(--clr-accent-400);
 
-  h2 {
-    font-size: 32px;
-    color: var(--clr-primary-100);
-  }
+	h2 {
+		font-size: 32px;
+		color: var(--clr-primary-100);
+	}
 }

@@ -1,5 +1,7 @@
+/* HTML ROOT */
+
 @use '../abstracts' as *;
 
 :root {
-  @include rootOutput(); // Include root output function
+	@include rootOutput(); // Include root output function
 }
