@@ -12,12 +12,22 @@
 		"convert": "gulp images && gulp fonts",
 		"prepare": "husky install"
 	},
-  "lint-staged": {
-    "*.{js,ts,jsx}" : [
-      "eslint"
-    ]
-  },
-	"keywords": [],
+	"lint-staged": {
+		"*.{js,ts,jsx}": [
+			"eslint"
+		],
+		"*": [
+			"prettier --write --ignore-unknown"
+		]
+	},
+	"keywords": [
+		"gulp",
+		"eslint",
+		"babel",
+		"husky",
+		"prettier",
+		"lint-staged"
+	],
 	"author": "a_bugaenkov",
 	"license": "ISC",
 	"devDependencies": {
