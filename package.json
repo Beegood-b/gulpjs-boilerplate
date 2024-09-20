@@ -12,6 +12,10 @@
     "convert": "gulp images && gulp fonts",
     "prepare": "husky install"
   },
+  "eslintIgnore": [
+    "src/js/main.min.js",
+    "dist"
+  ],
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
       "eslint"
