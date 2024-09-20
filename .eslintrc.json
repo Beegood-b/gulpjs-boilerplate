@@ -9,7 +9,7 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    "semi": ["error", "always"],
+    "semi": ["warn", "always"],
     "prettier/prettier": [
       "error",
       {

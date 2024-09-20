@@ -1,0 +1,5 @@
+dist
+src/css/**/*.css
+src/css/**/*.map
+src/js/main.min.js
+src/*.html
