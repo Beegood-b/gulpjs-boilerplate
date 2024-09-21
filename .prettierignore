@@ -1,5 +1,5 @@
 dist
-src/css/**/*.css
-src/css/**/*.map
+src/css
+src/js/libs
 src/js/main.min.js
 src/*.html

@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="./css/styles.min.css" />
   </head>
   <body>
-    @@include('components/header.html')
+    <!-- INCLUDING HEADER -->
+    @@include('partials/header.html')
 
+    <!-- MAIN CONTENT -->
     <main class="content">
       <section class="section">
         <div class="section__inner">
@@ -39,9 +41,10 @@
         </div>
       </section>
     </main>
+    <!-- INCLUDING FOOTER -->
+    @@include('partials/footer.html')
 
-    @@include('components/footer.html')
-
+    <!-- SCRIPTS -->
     <script src="./js/libs/jquery-3.7.1.min.js"></script>
     <script src="./js/main.min.js"></script>
   </body>

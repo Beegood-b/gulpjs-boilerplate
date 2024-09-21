@@ -1,5 +1,5 @@
 {
-  "name": "gulp_test",
+  "name": "gulp_build",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,19 +12,6 @@
     "convert": "gulp images && gulp fonts",
     "prepare": "husky install"
   },
-  "eslintIgnore": [
-    "src/js/main.min.js",
-    "src/js/libs/*.js",
-    "dist"
-  ],
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "eslint --fix"
-    ],
-    "*": [
-      "prettier --write --ignore-unknown"
-    ]
-  },
   "keywords": [
     "gulp",
     "eslint",
@@ -34,7 +21,7 @@
     "lint-staged"
   ],
   "author": "a_bugaenkov",
-  "license": "ISC",
+  "license": "WTFPL",
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
@@ -67,5 +54,18 @@
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "sass": "^1.78.0"
+  },
+  "eslintIgnore": [
+    "src/js/main.min.js",
+    "src/js/libs/*.js",
+    "dist"
+  ],
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "*": [
+      "prettier --write --ignore-unknown"
+    ]
   }
 }

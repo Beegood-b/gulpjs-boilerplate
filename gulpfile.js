@@ -127,7 +127,12 @@ function pages() {
         basepath: '@file'
       })
     )
-    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(
+      htmlmin({
+        collapseWhitespace: true,
+        removeComments: true
+      })
+    )
     .pipe(
       rename((path) => {
         // eslint-disable-next-line no-param-reassign
