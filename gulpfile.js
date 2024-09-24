@@ -1,4 +1,3 @@
-// eslint-disable-next-line object-curly-newline
 const { src, dest, watch, parallel, series } = require('gulp');
 
 // HTML
@@ -64,7 +63,6 @@ const notify = require('gulp-notify');
 // };
 
 // Deleting dist folder
-// eslint-disable-next-line consistent-return
 function del(done) {
   // Check if the folder already exists
   if (fs.existsSync('./dist' && './src/css')) {
@@ -85,7 +83,7 @@ function plumberNotify() {
   });
 }
 
-// Taks for fonts converting
+// Task for fonts converting
 function fonts() {
   return src('./src/assets/fonts/accomodate/**/*.*')
     .pipe(changed('./src/assets/fonts/accomodate', { extension: '.woff2' }))
@@ -135,9 +133,7 @@ function pages() {
     )
     .pipe(
       rename((path) => {
-        // eslint-disable-next-line no-param-reassign
         path.basename = path.basename.replace('.dev', '');
-        // eslint-disable-next-line no-param-reassign
         path.extname = '.html';
       })
     )
